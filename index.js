@@ -39,7 +39,7 @@ async function run() {
 // add a single blog
         app.post('/allblogs', async (req, res) => {
             const blog = req.body;
-            const result = await allBlogsCollection.insertOne(product);
+            const result = await allBlogsCollection.insertOne(blog);
             res.json(result);
         });
 
