@@ -24,8 +24,17 @@ async function run() {
         // Load all Blogs
         app.get('/allblogs', async (req, res) => {
             const cursor = allBlogsCollection.find({});
-            const allblogs = await cursor.toArray();
+			const page = req.query.page;
+			const size = parseInt(req.query.size);
+			let allblogs;
 			const count = await cursor.count();
+			if(page){
+				allblogs = await cursor.skip(page*size).limit(size).toArray();
+			}
+			else{
+				allblogs = await cursor.toArray();
+			}
+			
             res.send({
 				count,
 				allblogs
