@@ -1,6 +1,6 @@
-# Wellcome to DreamTrip 
+# Welcome to DreamTrip 
 
-Share Your Experience With Us [DreamTrip](https://dream-trip-bbed1.web.app/).
+### Share Your Experience With Us [DreamTrip](https://dream-trip-bbed1.web.app/).
 
 ## About DreamTrip
 
