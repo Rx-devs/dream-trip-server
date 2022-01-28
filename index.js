@@ -21,7 +21,7 @@ async function run() {
         const usersCollection = database.collection('users');
         const allBlogsCollection = database.collection('allblogs');
 
-        // Load all Blogs
+    // Load all Blogs
         app.get('/allblogs', async (req, res) => {
             const cursor = allBlogsCollection.find({});
 			const page = req.query.page;
@@ -42,21 +42,21 @@ async function run() {
         });
         
 
-// get a single blog
+    // get a single blog
         app.get('/allblogs/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
             const blog = await allBlogsCollection.findOne(query);
             res.json(blog);
         });
-// add a single blog
+    // add a single blog
         app.post('/allblogs', async (req, res) => {
             const blog = req.body;
             const result = await allBlogsCollection.insertOne(blog);
             res.json(result);
         });
 
-// delete a blog
+    // delete a blog
         app.delete('/allblogs/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
@@ -64,7 +64,7 @@ async function run() {
             res.json(result);
         });
 
-// load user as admin or not
+    // load user as admin or not
         app.get('/users/:email', async (req, res) => {
             const email = req.params.email;
             const query = { email: email };
@@ -76,14 +76,14 @@ async function run() {
             res.json({ admin: isAdmin });
         });
 
-// add an user
+    // add an user
         app.post('/users', async (req, res) => {
             const user = req.body;
             const result = await usersCollection.insertOne(user);
             res.json(result);
         });
 
-// update user
+    // update user
         app.put('/users', async (req, res) => {
             const user = req.body;
             const filter = { email: user.email };
@@ -93,7 +93,7 @@ async function run() {
             res.json(result);
         });
 
-// make admin
+    // make admin
         app.put('/users/admin', async (req, res) => {
             const user = req.body;
             const filter = { email: user.email };
@@ -102,14 +102,11 @@ async function run() {
             res.json(result);
         });
 
-
-        
-
     }
     finally {
         // Ensures that the client will close when you finish/error.
         // await client.close();
-    }
+    };
 };
 run().catch(console.dir);
 
