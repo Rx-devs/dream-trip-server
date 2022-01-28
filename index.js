@@ -25,7 +25,11 @@ async function run() {
         app.get('/allblogs', async (req, res) => {
             const cursor = allBlogsCollection.find({});
             const allblogs = await cursor.toArray();
-            res.send(allblogs);
+			const count = await cursor.count();
+            res.send({
+				count,
+				allblogs
+			});
         });
         
 
